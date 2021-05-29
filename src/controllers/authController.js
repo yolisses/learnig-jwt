@@ -1,6 +1,9 @@
 import express from 'express';
 import User from '../models/user.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+
+import authConfig from '../config/auth.js';
 
 const router = express.Router();
 
@@ -30,7 +33,11 @@ router.post('/authenticate', async (req, res) => {
 
 	user.password = undefined;
 
-	res.send({ user });
+	const token = jwt.sign({ id: user.id }, authConfig.secret, {
+		expiresIn: 86400, //one day
+	});
+
+	res.send({ user, token });
 });
 
 export default (app) => app.use('/auth', router);
