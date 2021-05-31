@@ -3,7 +3,7 @@ import User from '../models/user.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-import authConfig from '../config/auth.js';
+import authConfig from '../../config/auth.js';
 
 const router = express.Router();
 

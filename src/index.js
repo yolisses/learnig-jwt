@@ -4,9 +4,9 @@ const app = express();
 
 app.use(express.json());
 
-import authController from './controllers/authController.js';
+import authController from './app/controllers/authController.js';
 authController(app);
-import projectController from './controllers/projectController.js';
+import projectController from './app/controllers/projectController.js';
 projectController(app);
 
 const port = 5000;
